@@ -1,0 +1,1 @@
+spring-security,spring-sercurity-oauth2-autoconfigure,nosql,redis.
