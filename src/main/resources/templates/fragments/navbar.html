@@ -1,0 +1,31 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+
+<body>
+<div th:fragment="unlog">
+    <style>
+        .el-menu-item{
+            padding:0px;
+        }
+    </style>
+    <div id="navBar" class="wrap">
+        <div id="mainBar" role="mainBar">
+            <ul role="menubar" class="mainNav">
+                <li >
+                    <img th:src="@{img/logo.png}" class="mainBarLogo" />
+                </li>
+                <div  class="login">
+                    <li><a class="login" href="/AuthServer/login">Log In</a></li>
+                    <li><a class="login" href="/AuthServer/register">Sign Up</a></li>
+                </div>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<div th:fragment="login"> </div>
+</body>
+
+</html>

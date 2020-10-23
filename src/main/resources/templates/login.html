@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Log In | OpenGMS</title>
+    <link rel="shortcut icon" th:href="@{img/favicon.ico}" type="image/x=icon">
+
+    <link rel="stylesheet" th:href="@{element-ui/theme-chalk/index.css}">
+    <link rel="stylesheet" th:href="@{css/base/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{css/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{css/base/style.css}">
+    <link rel="stylesheet" th:href="@{css/base/universal.css}">
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{css/common/navbar.css}">
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{css/common/footerResponse.css}" />
+    <style>
+        .el-form-item__content .el-button--primary{
+            margin:0 10px 10px 0;
+        }
+        .el-button+.el-button{
+            margin:0px;
+        }
+        .loginCard{
+            max-width: 500px;
+            min-width: 350px;
+            margin: auto;
+        }
+        .errTag {
+            color: red;
+            position: absolute;
+            top: 56%;
+            left: 44%;
+        }
+    </style>
+
+</head>
+<body>
+<div id="app" v-cloak>
+    <div th:replace="fragments/navbar :: unlog"></div>
+    <div class="el-row" style="margin-bottom: 30px;">
+        <el-col class="" style="width: 100%">
+            <div style="margin-top: 30px">
+                <div class="loginCard el-card is-always-shadow">
+                    <!--                        表单头-->
+                    <div slot="header" class="clearfix el-card__header" style="text-align: center;">
+                        <span style="font-weight: bold; font-size: 20px;">Log In</span>
+                    </div>
+                    <div style="margin-top: 30px;">
+                        <div class="el-col el-col-20 el-col-offset-1">
+                            <form class="el-form demo-ruleForm el-form--label-right" method="post" action="/AuthServer/in" id="myForm">
+                                <div class="el-form-item el-form-item--feedback el-form-item--medium">
+                                    <label class="el-form-item__label" style="width: 110px;">Email</label>
+                                    <div class="el-form-item__content" style="margin-left: 110px;">
+                                        <div class="el-input el-input--medium">
+                                            <input type="text" name="account" autocomplete="off" placeholder="email address" class="el-input__inner">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="el-form-item el-form-item--feedback el-form-item--medium">
+                                    <label class="el-form-item__label" style="width: 110px;">Password</label>
+                                    <div class="el-form-item__content" style="margin-left: 110px;">
+                                        <div class="el-input el-input--medium">
+                                            <input type="password" name="password" autocomplete="off" placeholder="password" class="el-input__inner">
+                                        </div>
+                                    </div>
+                                </div>
+                                <span th:if="${param.error}" class="errTag">Login failed, email or password is wrong!</span>
+                                <div class="el-form-item el-form-item--feedback el-form-item--medium">
+                                    <div class="el-form-item__content" style="margin-left: 110px;">
+                                        <label class="el-checkbox">
+                                                <span class="el-checkbox__input">
+                                                    <input type="checkbox" name="type"  value="Remember email and password" style="cursor: pointer"/>
+                                                </span>
+                                                <span class="el-checkbox__label">Remember email and password</span>
+                                        </label>
+                                        <br>
+                                        Forget your password ? <a href="javascript:void(0)" id="resetPW" @click="resetPassword">Reset</a>
+                                    </div>
+                                </div>
+                                <div class="el-form-item el-form-item--feedback el-form-item--medium">
+                                    <div class="el-form-item__content" style="margin-left: 110px;">
+                                        <button type="submit" class="el-button el-button--primary el-button--medium" style="width: 90px;">
+                                            <span>Log In</span>
+                                        </button>
+                                        <button type="button" onclick="window.location.href = '/AuthServer/register'"  class="el-button el-button--default el-button--medium" style="width: 90px;">
+                                            <span>Sign Up</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </el-col>
+    </div>
+    <div th:replace="fragments/footer :: footer"></div>
+</div>
+</body>
+<script th:inline="javascript">
+    var preUrl=[[${preUrl}]];
+</script>
+    <script th:src="@{js/common/md5.js}"></script>
+    <script th:src="@{js/common/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{js/common/vue.min.js}"></script>
+    <script th:src="@{js/common/axios.min.js}"></script>
+    <script th:src="@{element-ui/index.js}"></script>
+    <script th:src="@{js/page/login.js}"></script>
+    <script th:src="@{element-ui/umd/locale/en.js}"></script>
+    <script th:src="@{js/common/navbar.js}"></script>
+</html>

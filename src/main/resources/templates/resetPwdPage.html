@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Reset | OpenGMS</title>
+
+    <link rel="shortcut icon" th:href="@{img/favicon.ico}" type="image/x=icon">
+    <link rel="stylesheet" th:href="@{element-ui/theme-chalk/index.css}">
+    <link rel="stylesheet" th:href="@{css/base/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{css/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{css/base/style.css}">
+    <link rel="stylesheet" th:href="@{css/base/universal.css}">
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{css/common/navbar.css}">
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{css/common/footerResponse.css}" />
+    <style>
+        .el-form-item__content .el-button--primary{
+            margin:0 10px 10px 0;
+        }
+        .el-button+.el-button{
+            margin:0px;
+        }
+        .loginCard{
+            max-width: 500px;
+            min-width: 350px;
+            margin: auto;
+        }
+        .registerCard{
+            min-width: 350px;
+            max-width: 500px;
+            margin: auto;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div th:replace="fragments/navbar :: unlog"></div>
+        <el-row style="margin-top:60px; margin-bottom: 30px;">
+            <el-col  class="" style="width: 100%">
+                <div class="registerCard el-card is-always-shadow">
+                    <div slot="header" class="clearfix el-card__header" style="text-align: center;">
+                        <span style="font-weight: bold;font-size: 20px">ENTER NEW PASSWORD</span>
+                    </div>
+                    <div style="margin-top: 30px" class="flexRowCenter">
+                        <el-col :span="20" >
+                        <el-form label-position="right" :model="resetForm" status-icon :rules="rules1" ref="resetForm" label-width="150px" class="demo-ruleForm" size="medium">
+                                <el-form-item label="Old Password" prop="oldPwd">
+                                    <el-input type="text" v-model="resetForm.oldPwd" autocomplete="off" placeholder="Old password"></el-input>
+                                </el-form-item>
+                                <el-form-item label="New Password" prop="newPwd">
+                                    <el-input type="password" v-model="resetForm.newPwd" autocomplete="off" placeholder="New password"></el-input>
+                                </el-form-item>
+                                <el-form-item label="Confirm Password" prop="checkPass">
+                                    <el-input type="password" v-model="resetForm.checkPass" autocomplete="off" placeholder="New password again"></el-input>
+                                </el-form-item>
+                                <div class="flexRowCenter" style="margin: 10px;width: 100%">
+                                    <el-button type="primary" @click="submitForm('resetForm')">SET NEW PASSWORD</el-button>
+                                </div>
+                            </el-form>
+                        </el-col>
+                    </div>
+                </div>
+            </el-col>
+        </el-row>
+        <div th:replace="fragments/footer :: footer"></div>
+    </div>
+</body>
+<script th:inline="javascript">
+    var preUrl=[[${preUrl}]];
+</script>
+<script th:src="@{js/common/jquery-3.3.1.min.js}"></script>
+<script th:src="@{js/common/vue.min.js}"></script>
+<script th:src="@{js/common/axios.min.js}"></script>
+<script th:src="@{element-ui/index.js}"></script>
+<script th:src="@{element-ui/umd/locale/en.js}"></script>
+<script th:src="@{js/common/navbar.js}"></script>
+<script th:src="@{js/page/resetPassword.js}"></script>
+</html>
