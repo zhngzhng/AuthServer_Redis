@@ -14,13 +14,11 @@ public interface IUserDao {
 
     void removeUser(String key,String value);
 
-    Object updateUser(HttpServletRequest request);
-
     Boolean isRegistered(String email);
 
     Object updateUserInfo(Map<String,Object> infoMap);
+
     String resetPassword(String email);
-//    Boolean verifyPassword(String email,String password);
 
     int updatePassword(String email, String oldPwd,String newPwd);
 }

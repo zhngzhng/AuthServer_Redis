@@ -59,17 +59,35 @@ public class UserController {
         }
     }
 
-    /**
+    /*
      * 用户信息更新，必须包含Uuid
      * HttpServletRequest只能接受key/value类型数据，对应post内容就是form-data，无法接收JSON格式
-     * @param request
+     * @param
      * @return
      */
-    @RequestMapping(value = "/update", produces = {"application/json;charset=UTF-8"}, method = RequestMethod.POST)
-    public Object updateUser(HttpServletRequest request) {
-        UserDaoImpl userDao = new UserDaoImpl(mongoTemplate);
+//    @RequestMapping(value = "/update", produces = {"application/json;charset=UTF-8"}, method = RequestMethod.POST)
+//    public Object updateUser(HttpServletRequest request) {
+//        UserDaoImpl userDao = new UserDaoImpl(mongoTemplate);
+//        try {
+//            return userDao.updateUser(request);
+//        }catch (Exception e){
+//            return "Fail";
+//        }
+//    }
+
+    /**
+     * 传入json字符串，然后进行更新。
+     * @param userInfo
+     * @return
+     */
+    //@RequestBody只支持json（JSON字符串,application/json）请求体
+    // servlet只支持简单key/value型(json对象,form-data,application/x-www-form-urlencoded)
+    // @RequestParam则两种都支持
+    //requestBody就是请求中的request payload对应的就是JSON文件，需要使用Map来接收
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    public Object updateUser(@RequestBody Map<String, Object> userInfo){
         try {
-            return userDao.updateUser(request);
+            return userDao.updateUserInfo(userInfo);
         }catch (Exception e){
             return "Fail";
         }
@@ -99,8 +117,9 @@ public class UserController {
         return ResultUtils.success(result);
     }
 
+
     /**
-     * 客户端注册，post json内容
+     * 客户端注册，post json字符串
      * @param oauthClient
      * @return
      */
@@ -122,14 +141,5 @@ public class UserController {
     public String test(@RequestParam String name){
         return "ok";
     }
-    //@RequestBody只支持json（JSON字符串,application/json）请求体
-    // servlet只支持简单key/value型(json对象,form-data,application/x-www-form-urlencoded)
-    // @RequestParam则两种都支持
-    //requestBody就是请求中的request payload对应的就是JSON文件，需要使用Map来接收
-    @RequestMapping(value = "/test2",method = RequestMethod.POST)
-    public String test2(@RequestBody Map<String, Object> testUser){
-        String uuid = (String)testUser.get("uuid");
-        //arraylist只需要对应数组就可以了。
-        return "ok";
-    }
+
 }

@@ -126,26 +126,6 @@ new Vue({
         resetForm(formName){
             this.$refs[formName].resetFields();
         },
-        //
-        // //org tag
-        // handleClose(tag) {
-        //     this.ruleForm2.org.splice(this.ruleForm2.org.indexOf(tag), 1);
-        // },
-        // showInput() {
-        //     this.inputVisible = true;
-        //     this.$nextTick(_ => {
-        //         this.$refs.saveTagInput.$refs.input.focus();
-        //     });
-        // },
-        // handleInputConfirm() {
-        //     let inputValue = this.inputValue;
-        //     if (inputValue) {
-        //         this.ruleForm2.org.push(inputValue);
-        //     }
-        //     this.inputVisible = false;
-        //     this.inputValue = '';
-        // },
-
         register(){
             $.ajax({
                 url : '/AuthServer/user/add',

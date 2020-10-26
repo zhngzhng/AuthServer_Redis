@@ -16,21 +16,19 @@ import java.util.Date;
 @NoArgsConstructor
 @Document(collection = "users")
 public class User {
-    /**
-     *
+    /*
+    在用户注册时，后端通过UUID工具类生成
+    用户的标识信息，无法修改
      */
-    //    _id(fixed):mongodb自动生成
     private String userId; //uuid
-    @Email
-    @NotNull(message = "{user.email.notnull}")
     private String email;
+    /*
+    用户可修改信息
+     */
     private String password;  //MD5 在后端进行MD5编码
-    @NotNull(message = "{user.name.notNull}")
     private String name;
-
-    @Size(min = 8,max = 15, message = "{user.phoneNum.size}")
     private long phoneNum;
-    private UserTitle title;
+    private UserTitle title; //enum类型，只需要传入对应的字符串即可
     private String country;
     private String state;
     private String city;
@@ -38,7 +36,12 @@ public class User {
     //动态数组，只需要对应String[]即可
     private ArrayList<String> organizations;
     private String introduction;
-    //用户对象
+    /*
+    资源对象，直接以对象方式存入mongodb
+    其包含的字段：
+    UID,Name,Address,Type,Privacy,Thumbnail,EditToolInfo,FileSize
+    Parent,MD5,Suffix,Description,Template,UploadTime,Children
+     */
     private ArrayList<Object> resources;
 
     //用户无法自行修改部分

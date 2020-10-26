@@ -67,5 +67,7 @@ public class OAuth2AuthServer extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(AuthorizationServerSecurityConfigurer securityConfigurer) throws Exception{
         securityConfigurer.checkTokenAccess("isAuthenticated()");
+        //开放form-data验证，否则只会走Basic Auth
+        securityConfigurer.allowFormAuthenticationForClients();
     }
 }

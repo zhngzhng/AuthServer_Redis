@@ -3,6 +3,7 @@ package com.ex.oauthauthserver.Dao;
 import com.ex.oauthauthserver.config.Md5PasswordEncoder;
 import com.ex.oauthauthserver.model.User;
 import com.ex.oauthauthserver.utils.Common;
+import com.mongodb.client.result.UpdateResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -51,25 +52,6 @@ public class UserDaoImpl implements IUserDao{
         mongoTemplate.remove(query, "users");
     }
 
-
-    //用户信息更新接口，通过用户uuid进行比对，然后构造Update进行更新。
-    @Override
-    public Object updateUser(HttpServletRequest request) {
-        try {
-            //通过userId进行用户比对，userId无需更新。
-            String userId = request.getParameter("userId");
-            Query query = new Query(Criteria.where("userId").is(userId));
-            Update update = new Common().setUpdate(request);
-//          更新，然后将新的取出来，返回到前端
-            mongoTemplate.updateFirst(query, update, User.class);
-            User newUser = mongoTemplate.findOne(query, User.class);
-            newUser.setPassword("");
-            return newUser;
-        } catch (Exception e) {
-            return "Fail";
-        }
-    }
-
 //    @Override
 //    public Object updatePassword(String email, String password) {
 //        try {
@@ -109,11 +91,11 @@ public class UserDaoImpl implements IUserDao{
         Query query = new Query(Criteria.where("userId").is(userId));
         Update update = commonServer.setUpdate(infoMap);
         try{
-            mongoTemplate.updateFirst(query,update,User.class);
+            mongoTemplate.updateFirst(query, update, User.class);
+            return "Suc";
         }catch (Exception e){
-            return e;
+            return "Fail";
         }
-        return "suc";
     }
 
     //重置密码邮件

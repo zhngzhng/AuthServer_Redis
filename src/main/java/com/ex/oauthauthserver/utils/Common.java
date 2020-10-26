@@ -77,12 +77,16 @@ public class Common {
         Update update = new Update();
         for (String key: infoMap.keySet()){
             /*
-            值的四种情况
-            1.对象
-            2.数组
-            3.long
-            4.String
+            用户属性值的四种情况
+            1.对象 resource,存储的子对象
+            2.动态数组 ArrayList<String> 只需要构造String[]即可。
+            3.long phoneNum
+            4.String 普通属性
+            特殊情况，userId,email,Password.loginIp,domain不能通过此修改
              */
+            if (key.equals("userId")||key.equals("password")||key.equals("loginIp")||key.equals("domain")){
+                continue;
+            }
             if (key.equals("resource")){
                 Object value = infoMap.get(key);
                 update.set(key,value);

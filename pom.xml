@@ -79,6 +79,7 @@
 
 <!--        从Idea中启动需要引入3.1版本的javax.servlet-api
             实际上tomcat内置了servlet-api
+            由于java双亲委派机制的存在，总是会导入tomcat中的而不会使用项目中的。
 -->
 <!--        <dependency>-->
 <!--            <groupId>javax.servlet</groupId>-->

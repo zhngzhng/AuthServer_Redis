@@ -1,0 +1,26 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost/userServer
+  mail:
+#    username: zhengzhong0521@163.com
+#    host: smtp.163.com
+#    password: SOQVWBBNKVXGMRPN
+    host: smtp.qq.com
+    username: zhengzhong2020@qq.com
+    password: kyicfwdvulalbbji
+#  mail:
+#    host: smtp.163.com
+#    username: nj_gis@163.com
+#    password: 1qaz2wsx
+#    default-encoding: UTF-8
+#    protocol: smtp
+#    port: 25
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#            required: true
+#      uri: mongodb://172.21.213.33:27017/userServer
