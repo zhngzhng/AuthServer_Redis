@@ -27,6 +27,7 @@ public class User {
      */
     private String password;  //MD5 在后端进行MD5编码
     private String name;
+
     private long phoneNum;
     private UserTitle title; //enum类型，只需要传入对应的字符串即可
     private String country;

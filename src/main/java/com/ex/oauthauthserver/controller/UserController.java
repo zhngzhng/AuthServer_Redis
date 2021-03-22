@@ -12,10 +12,12 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+// import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -27,7 +29,8 @@ public class UserController {
     private MongoTemplate mongoTemplate;
     @Autowired
     UserDaoImpl userDao;
-
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
     /**
      * 用户注册
      * @param user
@@ -133,6 +136,11 @@ public class UserController {
         }catch (Exception e){
             return "Fail";
         }
+    }
+
+    @RequestMapping(value = "/delToken", method = RequestMethod.GET)
+    public Boolean delToken(@RequestParam("access_token") String access_token){
+        return stringRedisTemplate.delete(access_token);
     }
     /*
     @RequestParam

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>Log In | OpenGMS</title>
+
+    <!--    <link rel="stylesheet" href="/static/css/base/bootstrap.min.css">-->
+    <link rel="stylesheet" th:href="@{css/common/fluent/fluent.css}">
+    <link rel="stylesheet" th:href="@{css/common/wzhFlexContainer.css}">
+    <link rel="stylesheet" th:href="@{css/common/wzhStyle.css}">
+
+
+    <link rel="stylesheet" th:href="@{element-ui/theme-chalk/index.css}">
+    <link rel="stylesheet" th:href="@{css/base/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{css/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{css/base/style.css}">
+    <link rel="stylesheet" th:href="@{css/base/universal.css}">
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{css/common/navbar.css}">
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{css/common/footerResponse.css}"/>
+    <style>
+        p {
+            color: #333333
+        }
+
+        h2, h3, h4, h5 {
+            font-weight: 600;
+        }
+
+        .el-form-item__content .el-button--primary {
+            margin: 0 10px 10px 0;
+        }
+
+        .el-button + .el-button {
+            margin: 0px;
+        }
+
+        .loginCard {
+            max-width: 500px;
+            min-width: 350px;
+            margin: auto;
+        }
+
+        /*spring boot对资源的默认扫描路径是：/static,/public,/resources, /META-INF/resources*/
+        .platImg {
+            width: 32%;
+            background-image: url("img/carousels/mountain_press.jpg");
+        }
+
+        .titleImg {
+            display: none;
+            position: absolute;
+            height: 77px;
+            width: 100%;
+            z-index: -1;
+            background-image: url("img/carousels/mountain_press.jpg");
+        }
+
+        .logoImg {
+            width: 188px;
+            height: 50px;
+            margin: 20px 0 0 20px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-image: url("img/logogrey.png");
+        }
+
+        .userSection {
+            width: 63%;
+        }
+
+        .a_Section p {
+            margin: 0 0 5px 0;
+        }
+
+        .platName {
+            float: right;
+            margin: 0px 15px;
+            font-weight: 600;
+            font-size: 15px;
+            color: #999999;
+        }
+
+        .platDes {
+            float: right;
+            margin: 0px 15px;
+            font-size: 15px;
+            color: #999999;
+            text-align: right;
+        }
+
+        .mainSec {
+            margin-left: auto;
+            margin-right: auto;
+            width: 500px;
+            padding: 0 50px 0 40px;
+            height: calc(100% - 65px)
+        }
+
+        .logSec h2, .logSec h3, .logSec h4 {
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .buttonGroup .wzhButton, .buttonGroup .a_Section {
+            flex: 1;
+        }
+
+        @media only screen and (max-width: 900px) {
+            .platImg {
+                display: none;
+            }
+
+            .titleImg {
+                display: block;
+            }
+
+            .userSection {
+                width: 100%;
+            }
+
+            .mainSec {
+                padding: 0 45px;
+            }
+        }
+
+        @media only screen and (max-width: 606px) {
+            .mainSec {
+                width: auto;
+            }
+        }
+
+        @media only screen and (max-width: 516px) {
+            .platTitleDes {
+                opacity: 0;
+            }
+
+            .logoImg {
+                margin-left: 40px;
+            }
+
+            .buttonGroup .wzhButton, .buttonGroup .a_Section {
+                width: 100%;
+                flex: auto;
+            }
+
+            .a_Section {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 50px;
+            }
+
+            .a_Section p {
+                margin: 0 5px 0 0;
+            }
+        }
+    </style>
+
+</head>
+<body>
+<!--<h1 th:text="${name}">Hello World</h1>-->
+<div id="app" v-cloak>
+    <div class="flexAlignCenter" :style="{'height':ScreenMinHeight,'max-height':ScreenMaxHeight}"
+         style="min-height:576px">
+        <div class="platImg" style="width: 38%;height: 100%">
+            <div class="logoImg"></div>
+        </div>
+        <div class="userSection" style="height: 100%">
+            <div class="titleImg">
+                <div class="logoImg"></div>
+            </div>
+            <div class="platTitleDes flexCol flexAlignEnd" style="margin-top:25px ">
+                <p class="platName">Open GMS</p>
+                <p class="platDes">Open Geographic Modeling and Simulation</p>
+            </div>
+            <form action=""></form>
+            <div class="mainSec flexCol flexJustAround">
+                <div class="logSec">
+                    <h2 style="margin-bottom: 35px">Welcome to OpenGMS</h2>
+                    <h4>Email Address</h4>
+                    <input class="wzhInput_primary wzhInput_shadow" placeholder="Please enter your email address">
+                    <h4>Password</h4>
+                    <input class="wzhInput_primary wzhInput_shadow" placeholder="Please enter your password">
+                    <h4>Password</h4>
+                    <input class="wzhInput_primary wzhInput_shadow" placeholder="Please enter your password again">
+
+                    <h4>Title</h4>
+                    <select class="wzhInput_primary wzhInput_shadow">
+                        <option>Dr</option>
+                        <option>td</option>
+                        <option>Mr</option>
+                    </select>
+
+                    <h4>Name</h4>
+                    <input class="wzhInput_primary wzhInput_shadow" placeholder="Please enter your name">
+                    <h4>Affliation</h4>
+                    <input class="wzhInput_primary wzhInput_shadow" placeholder="Please enter your affiliation">
+                    <div class="buttonGroup flexJustBetween flexWrap" style="margin-top: 30px;">
+                        <button class="wzhButton wzhButton_primary" style="margin-top: 15px" type="primary">Sign Up
+                        </button>
+                        <div class="a_Section" style="text-align: center">
+                            <p style="font-size: 12px">Already a member?</p>
+                            <h3 class="cursorPointer" style="margin:0 ;color: #ea4c89">Log in<i
+                                    class="fa fa-chevron-right"></i></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script th:inline="javascript">
+    var preUrl = [[${preUrl}]];
+</script>
+<script th:src="@{js/common/md5.js}"></script>
+<script th:src="@{js/common/jquery-3.3.1.min.js}"></script>
+<script th:src="@{js/common/vue.min.js}"></script>
+<script th:src="@{js/common/axios.min.js}"></script>
+<script th:src="@{element-ui/index.js}"></script>
+<script th:src="@{js/page/loginTest.js}"></script>
+<!--<script src="/static/element-ui/umd/locale/en.js"></script> <script src="/static/js/common/navbar.js"></script>-->
+</html>
